@@ -1,0 +1,96 @@
+{% extends 'rental/base.html' %}
+{% load static %}
+{% block title %}Отзывы{% endblock %}
+
+{% block content %}
+<style>
+    .card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Легкий эффект поднятия при наведении */
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-footer {
+    background-color: #f8f9fa;
+}
+
+.review_form_title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.search_taital {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.search_text {
+    font-size: 1.2em;
+    color: #555;
+}
+</style>
+<!-- Секция поиска -->
+<div class="search_section">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+            <h1 class="search_taital">Читай отзывы наших клиентов</h1>
+            <p class="search_text">Прочитайте, что говорят наши довольные клиенты о наших услугах!</p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- Отзывы клиентов -->
+<div class="review_gallery_section layout_padding">
+   <div class="container">
+      <div class="review_gallery_section_2">
+         <div class="row">
+            {% for review in reviews %}
+            <div class="col-md-4 mb-4 mt-4">
+               <!-- Карточка отзыва -->
+               <div class="card shadow-sm h-100">
+                  <div class="card-body">
+                     <h5 class="card-title">{{ review.name }}</h5>
+                     <p class="card-text">{{ review.message }}</p>
+                  </div>
+                  <div class="card-footer text-muted">
+                     <small>Отзыв оставлен: {{ review.created_at|date:"d M Y" }}</small>
+                  </div>
+               </div>
+            </div>
+            {% endfor %}
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- Форма для отправки отзыва -->
+<div class="container mt-5 mb-5">
+   <div class="row">
+      <div class="col-md-12">
+         <h2 class="review_form_title">Оставьте свой отзыв</h2>
+         <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+               <input type="text" class="form-control" placeholder="Ваше имя" name="Name" required>
+            </div>
+            <div class="form-group">
+               <textarea class="form-control" placeholder="Ваш отзыв" rows="5" name="Message" required></textarea>
+            </div>
+            <button type="submit" class="send_bt_rew mt-3">Отправить отзыв</button>
+         </form>
+      </div>
+   </div>
+</div>
+
+{% endblock %}

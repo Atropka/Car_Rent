@@ -1,0 +1,21 @@
+<form method="get" action="{% url 'car_list' %}">
+    <div class="row">
+        <div class="col-md-3 select-outline">
+            {{ form.brand }}
+        </div>
+        <div class="col-md-3 select-outline">
+            {{ form.body_type }}
+        </div>
+        <div class="col-md-3 select-outline">
+            {{ form.price_min }}
+        </div>
+        <div class="col-md-3 select-outline">
+            {{ form.price_max }}
+        </div>
+        <div class="col-md-3">
+            <div class="search_btn">
+                <button type="submit">Найти</button>
+            </div>
+        </div>
+    </div>
+</form>

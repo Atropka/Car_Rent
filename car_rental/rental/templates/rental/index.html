@@ -1,0 +1,256 @@
+
+{% extends 'rental/base.html' %}
+{% load static %}
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<style>
+    <style>
+   .banner_section {
+      position: relative;
+      overflow: hidden;
+   }
+
+   .banner_img {
+      position: relative;
+      top: 0;
+      left: 0;
+      transition: all 0.5s ease-in-out;
+   }
+
+   .banner_img img {
+      width: 100%;
+      height: auto;
+      transform: translate3d(0, 0, 0);
+   }
+
+   .banner_section:hover .banner_img img {
+      transform: translateY(-10px);
+   }
+
+   .btn_main .contact_bt {
+      margin-right: 15px;
+   }
+
+   /* Добавим плавные анимации для кнопок */
+   .btn_main .contact_bt a {
+      transition: color 0.3s ease;
+   }
+
+   .btn_main .contact_bt a:hover {
+      color: #1e9292;
+   }
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Popper.js (необходим для Bootstrap) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Опционально, подключение Animate.css -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.js"></script>
+<div class="banner_section layout_padding">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-6">
+            <div id="banner_slider" class="carousel slide" data-ride="carousel">
+               <div class="carousel-inner">
+                  <div class="carousel-item active">
+                     <div class="banner_taital_main animated fadeInLeft">
+                        <h1 class="banner_taital">Аренда авто <br><span style="color: #1e9292;">Для тебя</span></h1>
+                        <p class="banner_text animated fadeInUp">Незабываемые впечатления за рулём и океан эмоций обеспечены!</p>
+                        <div class="btn_main">
+                           <div class="contact_bt animated fadeInUp delay-1s"><a href="#">Далее</a></div>
+                           <div class="contact_bt active animated fadeInUp delay-2s"><a href="/about">О нас</a></div>
+                        </div>
+                     </div>
+                  </div>
+                   <div class="carousel-item">
+                     <div class="banner_taital_main animated fadeInLeft">
+                        <h1 class="banner_taital">Лучшие авто <br><span style="color: #1e9292;">на рынке</span></h1>
+                        <p class="banner_text animated fadeInUp">Выбор автомобиля у нас не оставит никого равнодушным! Всем найдется аппарат.</p>
+                        <div class="btn_main">
+                           <div class="contact_bt animated fadeInUp delay-1s"><a href="/cars">Автомобили</a></div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <a class="carousel-control-prev" href="#banner_slider" role="button" data-slide="prev">
+                  <i class="fa fa-angle-left"></i>
+               </a>
+               <a class="carousel-control-next" href="#banner_slider" role="button" data-slide="next">
+                  <i class="fa fa-angle-right"></i>
+               </a>
+            </div>
+         </div>
+         <div class="col-md-6">
+            <div class="banner_img">
+               <img src="{% static 'images/banner-img.png' %}" class="img-fluid" alt="Banner image">
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<div class="about_section layout_padding">
+         <div class="container">
+            <div class="about_section_2">
+               <div class="row">
+                  <div class="col-md-6">
+                     <div class="image_iman"><img src="{% static 'images/about-img.png' %}" class="about_img"></div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="about_taital_box">
+                        <h1 class="about_taital">О <span style="color: #1e9292;">Нас</span></h1>
+                        <p class="about_text">Компания “Рент Авто” предоставляет услуги проката автомобиля с 2011 года и прекрасно знает, как подобрать правильный автомобиль для каждого клиента, согласно его целям. Независимо от того, нужно ли вам авто на выходные, для деловой встречи или в долгожданный отпуск, автопарк предоставляет разнообразие моделей, среди которых обязательно найдется подходящий вариант.<div class="readmore_btn"><a href="#">Read More</a></div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- about section end -->
+      <div class="search_section">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <h1 class="search_taital">Подбери автомобиль специально для себя</h1>
+                  <p class="search_text">Выберите необходимые параметры </p>
+                  <!-- select box section start -->
+                  <div class="container">
+                     <div class="select_box_section">
+                        <div class="select_box_main">
+                           <div class="row">
+                              <div class="col-md-3 select-outline">
+                                 <select class="mdb-select md-form md-outline colorful-select dropdown-primary">
+                                    <option value="" disabled selected>Бренд</option>
+                                    <option value="Porsche">Porsche</option>
+                                 </select>
+                              </div>
+                              <div class="col-md-3 select-outline">
+                                 <select class="mdb-select md-form md-outline colorful-select dropdown-primary">
+                                    <option value="" disabled selected>Кузов</option>
+                                    <option value="Coupe">Coupe</option>
+                                    <option value="Jeep">Jeep</option>
+                                    <option value="Liftback">Liftback</option>
+                                 </select>
+                              </div>
+                              <div class="col-md-3 select-outline">
+                                 <select class="mdb-select md-form md-outline colorful-select dropdown-primary">
+                                    <option value="" disabled selected>Цена</option>
+                                    <option value="500">500</option>
+                                    <option value="400">400</option>
+                                    <option value="350">350</option>
+                                     <option value="300">300</option>
+                                 </select>
+                              </div>
+                              <div class="col-md-3">
+                                 <div class="search_btn"><a href="#">Найти</a></div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- select box section end -->
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- gallery section start -->
+      <div class="gallery_section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <h1 class="gallery_taital">Лучшие предложения</h1>
+               </div>
+            </div>
+            <div class="gallery_section_2">
+               <div class="row">
+                    {% for car in cars %}
+                    <div class="col-md-4">
+                        <div class="gallery_box">
+                            <div class="gallery_img">
+                                <img src="{{ car.image.url }}" alt="{{ car.brand }}">
+                            </div>
+                            <h3 class="types_text">{{ car.brand }} car</h3>
+                            <p class="looking_text">Цена за сутки ${{ car.price_per_day }}</p>
+                            <div class="read_bt"><a href="#">Заказать</a></div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+         </div>
+      </div>
+      <!-- gallery section end -->
+      <!-- choose section start -->
+      <div class="choose_section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <h1 class="choose_taital">Почему выбирают нас?</h1>
+               </div>
+            </div>
+            <div class="choose_section_2">
+               <div class="row">
+                  <div class="col-sm-4">
+                     <div class="icon_1"><img src="{% static 'images/icon-1.png'%}"></div>
+                     <h4 class="safety_text">Безопасность</h4>
+                     <p class="ipsum_text">Автомобили застрахованы по КАСКО и ОСАГО </p>
+                  </div>
+                  <div class="col-sm-4">
+                     <div class="icon_1"><img src="{% static 'images/icon-2.png'%}"></div>
+                     <h4 class="safety_text">Арена онлайн</h4>
+                     <p class="ipsum_text">Дисконтная система для постоянных клиентов</p>
+                  </div>
+                  <div class="col-sm-4">
+                     <div class="icon_1"><img src="{% static 'images/icon-3.png'%}"></div>
+                     <h4 class="safety_text">Лучшие услоия на рынке</h4>
+                     <p class="ipsum_text">Только новые
+                        автомобили </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- choose section end -->
+      <!-- client section start -->
+
+      <!-- client section end -->
+      <!-- contact section start -->
+      <div class="contact_section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-sm-12">
+                  <h1 class="contact_taital">Будьте за рулём уже сегодня</h1>
+               </div>
+            </div>
+         </div>
+         <div class="container">
+            <div class="contact_section_2">
+               <div class="row">
+                  <div class="col-md-12">
+                      <div class="mail_section_1">
+                    <form method="post">
+                     {% csrf_token %}
+
+                     <input type="text" class="mail_text" placeholder="Имя" name="Name" required>
+                     <input type="email" class="mail_text" placeholder="Почта" name="Email" required>
+                     <input type="text" class="mail_text" placeholder="Номер телефона" name="Phone Number" required>
+                     <textarea class="massage-bt" placeholder="Ваши пожелания" rows="5" id="comment" name="Message" required></textarea>
+                        <button class="send_bt" type="submit">Отправить</button>
+                  </form>
+                      </div>
+                  {% if success %}
+                     <div class="alert alert-success mt-3">
+                        Спасибо! Ваше сообщение отправлено.
+                     </div>
+                  {% endif %}
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+{% endblock %}

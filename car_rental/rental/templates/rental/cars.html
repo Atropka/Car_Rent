@@ -1,0 +1,80 @@
+
+{% extends 'rental/base.html' %}
+{% load static %}
+{% block title %}Автомобили{% endblock %}
+
+{% block content %}
+      <div class="search_section">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <h1 class="search_taital">Подбери автомобиль специально для себя</h1>
+                  <p class="search_text">Выберите необходимые параметры </p>
+                  <!-- select box section start -->
+                  <div class="container">
+                     <div class="select_box_section">
+                        <div class="select_box_main">
+                           <div class="row">
+                              <div class="col-md-3 select-outline">
+                                 <select class="mdb-select md-form md-outline colorful-select dropdown-primary">
+                                    <option value="" disabled selected>Бренд</option>
+                                    <option value="Porsche">Porsche</option>
+                                 </select>
+                              </div>
+                              <div class="col-md-3 select-outline">
+                                 <select class="mdb-select md-form md-outline colorful-select dropdown-primary">
+                                    <option value="" disabled selected>Кузов</option>
+                                    <option value="Coupe">Coupe</option>
+                                    <option value="Jeep">Jeep</option>
+                                    <option value="Liftback">Liftback</option>
+                                 </select>
+                              </div>
+                              <div class="col-md-3 select-outline">
+                                 <select class="mdb-select md-form md-outline colorful-select dropdown-primary">
+                                    <option value="" disabled selected>Цена</option>
+                                    <option value="500">500</option>
+                                    <option value="400">400</option>
+                                    <option value="350">350</option>
+                                     <option value="300">300</option>
+                                 </select>
+                              </div>
+                              <div class="col-md-3">
+                                 <div class="search_btn"><a href="#">Найти</a></div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- select box section end -->
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- gallery section start -->
+      <div class="gallery_section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <h1 class="gallery_taital">Лучшие предложения</h1>
+               </div>
+            </div>
+            <div class="gallery_section_2">
+               <div class="row">
+                    {% for car in cars %}
+                    <div class="col-md-4">
+                        <div class="gallery_box">
+                            <div class="gallery_img">
+                                <img src="{{ car.image.url }}" alt="{{ car.brand }}">
+                            </div>
+                            <h3 class="types_text">{{ car.brand }} car</h3>
+                            <p class="looking_text">Цена за сутки ${{ car.price_per_day }}</p>
+                            <div class="read_bt"><a href="#">Заказать</a></div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+         </div>
+      </div>
+
+{% endblock %}
